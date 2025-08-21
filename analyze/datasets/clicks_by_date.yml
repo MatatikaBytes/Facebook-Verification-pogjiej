@@ -1,0 +1,41 @@
+version: datasets/v0.2
+source: tap-facebook
+title: Total Clicks For All Campaigns Last 30 Days
+questions: How many clicks have all my campaigns had over the last 30 days?
+description: |-
+  Total clicks for all campaigns over the last 30 days.
+  #facebook-ads
+metadata: |-
+  {
+    "name": "cp",
+    "label": "Total Clicks For All Campaigns Last 30 Days", 
+    "related_table": {
+      "columns": [
+        {"name": "date", "label": "Date", "description": "Date"}
+      ],
+      "aggregates": [
+        {"name": "total_clicks", "label": "Total Clicks", "description": "Total Clicks"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "line", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT 
+    date_start as "cp.date"
+    , SUM(COALESCE(clicks::NUMERIC, 0)) as "cp.total_clicks"
+  FROM adsinsights_default cp
+  WHERE date_start::date > current_date - interval '30 day'
+  AND date_start::date <= current_date
+  GROUP BY date_start
+  ORDER BY date_start
