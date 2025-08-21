@@ -104,7 +104,7 @@
       "kind": "string",
       "value": "v23.0",
       "label": "API Version",
-      "description": "The version of API to use.",
+      "description": "A setting that determines version of the api.",
       "hidden": false,
       "sensitive": false,
       "protected": false
