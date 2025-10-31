@@ -10,6 +10,9 @@ plugins:
   - name: tap-facebook
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-facebook.git
+  - name: tap-instagram
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-instagram@feature/new_insight_streams_and_fixes_5x
   loaders:
   - name: target-postgres
     variant: matatika
