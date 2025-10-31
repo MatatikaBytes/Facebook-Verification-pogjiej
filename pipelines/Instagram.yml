@@ -1,6 +1,6 @@
 version: pipelines/v0.1
 name: Instagram
-timeout: 0
+timeout: 60
 max_retries: 0
 data_components:
 - tap-instagram
