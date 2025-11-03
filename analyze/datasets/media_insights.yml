@@ -1,0 +1,39 @@
+version: datasets/v0.2
+source: tap-instagram
+title: Total Insights of a Post
+questions: How many insights has my post generated over time?
+description: |-
+  Total insights of a post in it's lifetime.
+  #instagram
+metadata: |-
+  {
+    "name": "insights",
+    "label": "Total Insights of a post", 
+    "related_table": {
+      "columns": [
+        {"name": "title", "label": "Metric", "description": "Metric"}
+      ],
+      "aggregates": [
+        {"name": "value", "label": "Total Value", "description": "Total Value"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "bar", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT
+	  title as "insights.title"
+    , SUM(COALESCE(value::NUMERIC, 0)) as "insights.value"
+  FROM raw_instagram.media_insights
+  GROUP BY title
+  ORDER BY title
