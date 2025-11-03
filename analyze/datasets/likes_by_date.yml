@@ -32,7 +32,7 @@ visualisation: |-
   }
 query: |-
   SELECT 
-    timestamp as "date"
+    timestamp::date as "date"
     , SUM(COALESCE(like_count::NUMERIC, 0)) as "like_count"
   FROM raw_instagram.media
   GROUP BY timestamp
