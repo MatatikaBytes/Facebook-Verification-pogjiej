@@ -7,7 +7,7 @@ description: |-
   #instagram
 metadata: |-
   {
-    "name": "Likes",
+    "name": "likes",
     "label": "Total Likes For Posts in the Last 5 Years", 
     "related_table": {
       "columns": [
@@ -32,8 +32,8 @@ visualisation: |-
   }
 query: |-
   SELECT 
-    timestamp::date as "date"
-    , SUM(COALESCE(like_count::NUMERIC, 0)) as "like_count"
+    timestamp::date as "likes.date"
+    , SUM(COALESCE(like_count::NUMERIC, 0)) as "likes.like_count"
   FROM raw_instagram.media
   GROUP BY timestamp::date
   ORDER BY timestamp::date
