@@ -1,0 +1,31 @@
+version: datasets/v0.2
+source: tap-instagram
+title: Total activity of posts in an account
+questions: What all activities occured under post of an an account?
+description: |-
+  Activities of a post in an account.
+  #instagram
+metadata: |-
+  {
+    "name": "media activity",
+    "label": "Total Insights of a post", 
+    "related_table": {
+      "columns": [
+        {"name": "username", "label": "Handle", "description": "username"},
+        {"name": "timestamp", "label": "timestamp", "description": "date of post"},
+        {"name": "media_type", "label": "media type", "description": "Type of media"},
+        {"name": "like_count", "label": "Like count", "description": "Count of likes"},
+        {"name": "comments_count", "label": "Comment count", "description": "Count of comments"},
+        {"name": "ig_id", "label": "Instagram Id", "description": "Id of the account"},
+      ]
+    }
+  }
+visualisation: '{"html-table": {}}'
+query: |-
+  SELECT username
+    , timestamp
+    , media_type
+    , like_count
+    , comments_count
+    , ig_id
+  FROM raw_instagram.media
