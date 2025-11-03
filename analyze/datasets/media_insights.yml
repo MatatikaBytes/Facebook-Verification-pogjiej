@@ -31,8 +31,7 @@ visualisation: |-
     }
   }
 query: |-
-  SELECT
-	  title as "insights.title"
+  SELECT title as "insights.title"
     , SUM(COALESCE(value::NUMERIC, 0)) as "insights.value"
   FROM raw_instagram.media_insights
   GROUP BY title
