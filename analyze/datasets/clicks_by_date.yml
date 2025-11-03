@@ -21,6 +21,10 @@ metadata: |-
 visualisation: |-
   {"chartjs-chart": 
     {"chartType": "line", 
+      "data": {
+        "x": "date",
+        "y": "like_count"
+      },
       "options": {
         "scales": {
           "y": {
