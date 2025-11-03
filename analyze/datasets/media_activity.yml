@@ -7,7 +7,7 @@ description: |-
   #instagram
 metadata: |-
   {
-    "name": "media activity",
+    "name": "media_activity",
     "label": "Total Insights of a post", 
     "related_table": {
       "columns": [
@@ -17,6 +17,7 @@ metadata: |-
         {"name": "like_count", "label": "Like count", "description": "Count of likes"},
         {"name": "comments_count", "label": "Comment count", "description": "Count of comments"},
         {"name": "ig_id", "label": "Instagram Id", "description": "Id of the account"},
+        {"name": "id", "label": "Post Id", "description": "Id of the post"}
       ]
     }
   }
@@ -28,4 +29,5 @@ query: |-
     , like_count
     , comments_count
     , ig_id
+    , id
   FROM raw_instagram.media
