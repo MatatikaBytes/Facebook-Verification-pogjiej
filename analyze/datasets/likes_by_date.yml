@@ -1,0 +1,39 @@
+version: datasets/v0.2
+source: tap-instagram
+title: Total Likes For Posts
+questions: Over time does the number of likes on my posts increase?
+description: |-
+  Total likes for each post.
+  #instagram
+metadata: |-
+  {
+    "name": "Likes",
+    "label": "Total Likes For Posts in the Last 5 Years", 
+    "related_table": {
+      "columns": [
+        {"name": "date", "label": "Date", "description": "Date"}
+      ],
+      "aggregates": [
+        {"name": "like_count", "label": "Total Likes", "description": "Total Likes"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "line", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT 
+    timestamp as "date"
+    , SUM(COALESCE(like_count::NUMERIC, 0)) as "like_count"
+  FROM raw_instagram.media
+  GROUP BY timestamp
+  ORDER BY timestamp
